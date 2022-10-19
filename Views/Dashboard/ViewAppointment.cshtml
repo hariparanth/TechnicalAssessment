@@ -1,0 +1,84 @@
+﻿@model IEnumerable<TECHNICAL_ASSESSMENT.Models.Entity.Appointment>
+
+@{
+    ViewBag.Title = "ViewAppointment";
+}
+
+<div id="intro">
+    <h2>ViewAppointment</h2>
+
+    <h3>"The best way to find yourself is to lose yourself in the service of others"</h3>
+    <p>
+        Doctors are described as those who are medical practitioners.
+        A practitioner of medicine can either be a physician or a surgeon.
+        A physician diagnoses and treats illness while a surgeon performs surgery on their patients
+
+        Doctors have always played a very important in the development of our society.
+        Furthermore, many doctors have even risked their lives to serve the patients during the Covid-19 pandemic.
+        It is very important for us convey our gratitude towards them.
+        <b>Your patients are waiting in the waiting room. Could you please see the patient list <label id="labelid" style="color:blue" onclick="viewPatientList()" class="patient">View Patient list</label> </b>
+    </p>
+</div>
+
+<div id="table" style="display:none">
+    <h2>View Patient </h2>
+    <br />
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DoctorName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            
+        </tr>
+
+        @foreach (var item in Model)
+        {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DoctorName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        @if (item.Status != null)
+        {
+            if (item.Status== "approved")
+            {
+                <td style="color:green">
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+            }
+            else
+            {
+                <td style="color:red">
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+            }
+
+        }
+        else
+        {
+            <td>
+                @Html.ActionLink("Approve", "Status", "Dashboard", new { id = item.AppointmentId, status = "approved" }, null) |
+                @Html.ActionLink("Deny", "Status", "Dashboard", new { id = item.AppointmentId, status = "deny" }, null)
+            </td>
+        }
+
+
+    </tr>
+        }
+
+    </table>
+</div>
+<script>
+    function viewPatientList() {
+        document.getElementById("table").style.display = 'block';
+        document.getElementById("intro").style.display = 'none';
+    }
+</script>

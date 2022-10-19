@@ -1,6 +1,6 @@
 ﻿# TechnicalAssessment
 ## Configuration:
-### If you want to run the application, you must configure the connection string in **web.config** (\TECHNICAL_ASSESSMENT\Web.config) file.
+### If you want to run the application, you must configure the connection string in **web.config** file.
 ## Login credentials:
 1. Admin User:
    - UserName = "AdminOne",        

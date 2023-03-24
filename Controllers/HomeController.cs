@@ -16,6 +16,10 @@ namespace TECHNICAL_ASSESSMENT.Controllers
             return View();
         }
         
+        public void New()
+        {
+
+        }
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();

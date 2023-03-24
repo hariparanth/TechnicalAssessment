@@ -15,6 +15,10 @@ namespace TECHNICAL_ASSESSMENT.Controllers
         {
             return View();
         }
+        public ActionResult RedirectLogin()
+        {
+            return View("Login");
+        }
         
         public ActionResult Logout()
         {
